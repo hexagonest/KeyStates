@@ -13,7 +13,6 @@ love.init = function(can){
 }
 
 function run(){
-    
     canvas.addEventListener("keydown", onKeyDown, true);
     canvas.addEventListener("keyup", onKeyUp, true);
 
