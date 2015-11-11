@@ -6,35 +6,38 @@ var keysDown = {};
 var canvas;
 var ctx;
 
-function initLoveScript(can){
+love.init = function(can){
     canvas = can;
     ctx = canvas.getContext("2d");
+    run();
 }
 
-canvas.addEventListener("keydown", onKeyDown, true);
-canvas.addEventListener("keyup", onKeyUp, true);
-
-function onKeyDown(e) {
-    keysDown[e.keyCode] = true;
-    console.log("key down.");
-    console.log(keysDown);
-}
-
-function onKeyUp(e) {
-    keysDown[e.keyCode] = false;
-    console.log("key UP NIGA");
-    console.log(keysDown);
-}
-
-love.keyDown = function() {
-    if(keysDown.hasOwnProperty(id))
-        return keysDown[id];
+function run(){
     
-    return false;
+    canvas.addEventListener("keydown", onKeyDown, true);
+    canvas.addEventListener("keyup", onKeyUp, true);
+
+    function onKeyDown(e) {
+        keysDown[e.keyCode] = true;
+        console.log("key down.");
+        console.log(keysDown);
+    }
+
+    function onKeyUp(e) {
+        keysDown[e.keyCode] = false;
+        console.log("key UP NIGA");
+        console.log(keysDown);
+    }
+
+    love.keyDown = function() {
+        if(keysDown.hasOwnProperty(id))
+            return keysDown[id];
+        
+        return false;
+    }
+
+    love.load();
+    love.update();
+    love.draw();
+    setInterval(function(){love.update();love.draw();},1);
 }
-
-love.load();
-love.update();
-love.draw();
-setInterval(function(){love.update();love.draw();},1);
-
