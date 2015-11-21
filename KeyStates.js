@@ -1,4 +1,4 @@
-var Keys = {
+window.Keys = {
     keysDown: {},
 
     init: function(element) {
