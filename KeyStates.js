@@ -6,14 +6,14 @@ window.Keys = {
         element.addEventListener("keyup", this.onKeyUp, true);
     },
     
-    keyDown: function(id) {
+    isDown: function(character) {
         if(this.keysDown.hasOwnProperty(id))
             return this.keysDown[id];
 
         return false;
     },
     
-    anyKeyDown: function() {
+    anyDown: function() {
         for(var keyState in Keys.keysDown){
             if(!Keys.keysDown.hasOwnProperty(keyState)){
                 continue;
