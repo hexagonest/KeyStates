@@ -4,9 +4,10 @@ window.Keys = {
     init: function(element) {
         element.addEventListener("keydown", this.onKeyDown, true);
         element.addEventListener("keyup", this.onKeyUp, true);
+        return Keys;
     },
     
-    isDown: function(character) {
+    isDown: function(id) {
         if(this.keysDown.hasOwnProperty(id))
             return this.keysDown[id];
 
@@ -20,7 +21,7 @@ window.Keys = {
             }
             
             if(Keys.keysDown[keyState] == true) {
-                return true;
+                return keyState;
             }
         }
         return false;
