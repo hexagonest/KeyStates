@@ -1,24 +1,36 @@
-var Keys = function(element) {
-    this.element = element;
-    this.keysDown = {};
+var Keys = {
+    keysDown: {},
+
+    init: function(element) {
+        element.addEventListener("keydown", this.onKeyDown, true);
+        element.addEventListener("keyup", this.onKeyUp, true);
+    },
     
-    this.element.addEventListener("keydown", onKeyDown, true);
-    this.element.addEventListener("keyup", onKeyUp, true);
-};
+    keyDown: function(id) {
+        if(this.keysDown.hasOwnProperty(id))
+            return this.keysDown[id];
 
-Keys.prototype.keyDown = function(id) {
-    if(this.keysDown.hasOwnProperty(id))
-        return this.keysDown[id];
+        return false;
+    },
     
-    return false;
-}
-
-function onKeyDown(e) {
-    console.log(e.keyCode + " was pressed");
-    this.keysDown[e.keyCode] = true;
-}
-
-function onKeyDown(e) {
-    console.log(e.keyCode + " was lifted");
-    this.keysDown[e.keyCode] = false;
+    anyKeyDown: function() {
+        for(var keyState in Keys.keysDown){
+            if(!Keys.keysDown.hasOwnProperty(keyState)){
+                continue;
+            }
+            
+            if(Keys.keysDown[keyState] == true) {
+                return true;
+            }
+        }
+        return false;
+    },
+    
+    onKeyDown: function(e) {
+        Keys.keysDown[e.keyCode] = true;
+    },
+    
+    onKeyUp: function(e) {
+        Keys.keysDown[e.keyCode] = false;
+    }
 }
