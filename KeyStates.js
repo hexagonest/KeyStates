@@ -14,11 +14,11 @@ Keys.prototype.keyDown = function(id) {
 }
 
 Keys.prototype.onKeyDown = function(e) {
-    this.keysDown[e.keyCode] = true;
     console.log(e.keyCode + " was pressed");
+    this.keysDown[e.keyCode] = true;
 }
 
 Keys.prototype.onKeyUp = function(e) {
-    this.keysDown[e.keyCode] = false;
     console.log(e.keyCode + " was lifted");
+    this.keysDown[e.keyCode] = false;
 }
