@@ -1,4 +1,3 @@
-# LoveScript
 Key States - Easy way to check if keys are being pressed.
 
 ## Set up
