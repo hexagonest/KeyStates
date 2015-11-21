@@ -2,8 +2,8 @@ var Keys = function(element) {
     this.element = element;
     this.keysDown = {};
     
-    this.element.addEventListener("keydown", this.keys.onKeyDown, true);
-    this.element.addEventListener("keyup", this.keys.onKeyUp, true);
+    this.element.addEventListener("keydown", this.onKeyDown, true);
+    this.element.addEventListener("keyup", this.onKeyUp, true);
 };
 
 Keys.prototype.keyDown = function(id) {
